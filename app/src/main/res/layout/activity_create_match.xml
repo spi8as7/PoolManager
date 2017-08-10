@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">>
+
+            <TextView
+                android:id="@+id/player1TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player1"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/BallText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/player1TextView"
+                android:text="Player2"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/placeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/BallText"
+                android:text="Place"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/placeTextView"
+                android:text="Date"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/timeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dateTextView"
+                android:text="Time"
+                android:textSize="30sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">>
+
+            <EditText
+                android:id="@+id/timeEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dateEditText"
+                android:ems="6"
+                android:inputType="time"
+                android:text="12345"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/dateEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/placeEditText"
+                android:ems="6"
+                android:inputType="date"
+                android:text="12345"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/player1Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="6"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/player2Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/player1Text"
+                android:ems="6"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="false"
+                android:text="Create" />
+
+            <EditText
+                android:id="@+id/placeEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/player2Text"
+                android:ems="6"
+                android:inputType="text"
+                android:text="volos"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+

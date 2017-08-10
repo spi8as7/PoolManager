@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e2e4fe"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="268dp">
+
+        <ListView
+            android:id="@+id/card_listView"
+            android:layout_width="match_parent"
+            android:layout_height="313dp"
+            android:cacheColorHint="@android:color/transparent"
+            android:clickable="false"
+            android:divider="@null"
+            android:dividerHeight="10dp"
+            android:listSelector="@android:color/transparent" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearbot"
+        android:layout_width="match_parent"
+        android:layout_height="166dp"
+        android:layout_weight="0.60"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player1"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/ballTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:text="Ball"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/resultTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ballTextView"
+                android:text="Result"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/shotTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/resultTextView"
+                android:text="Shot type"
+                android:textSize="30sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">>
+
+            <TextView
+                android:id="@+id/title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Move 1"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30sp" />
+
+            <Spinner
+                android:id="@+id/ballSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title2" />
+
+            <Spinner
+                android:id="@+id/resultSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_below="@+id/ballSpinner"
+                android:entries="@array/result_arrays"
+                android:prompt="@string/choose_prompt"
+                android:textSize="36sp" />
+
+            <Spinner
+                android:id="@+id/shotSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_below="@+id/resultSpinner"
+                android:entries="@array/shot_arrays"
+                android:prompt="@string/choose_prompt"
+                android:textSize="36sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/nextMove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="false"
+        android:elevation="0dp"
+        android:text="Next Move" />
+
+
+</LinearLayout>
