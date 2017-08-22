@@ -5,7 +5,7 @@ package com.example.spi8a.poolmanager;
  */
 
 public enum MoveCompletion {
-    DOBALL,
-    MISSBALL,
-    SAFEBALL;
+    DONE,
+    MISS,
+    SAFE;
 }

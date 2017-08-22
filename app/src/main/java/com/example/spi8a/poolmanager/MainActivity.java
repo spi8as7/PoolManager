@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         String json = prefs.getString("yourStringName", "default_value_here_if_string_is_missing");
         Gson gson = new Gson();
         Type type = new TypeToken<List<Match>>(){}.getType();
-        final List<Match> matches =  gson.fromJson(json,type);
-
+         //final List<Match> matches =  gson.fromJson(json,type);
+        final List<Match> matches = new ArrayList<Match>();
         //create list for listview based on stored matches
         List<String> mylist = new ArrayList<String>();
         for(int i=0; i < matches.size(); i++) {

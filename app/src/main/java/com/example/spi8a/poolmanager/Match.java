@@ -8,6 +8,26 @@ import java.util.ArrayList;
 
 
 public class Match {
+    public String getPlayer1() {
+        return player1;
+    }
+
+    public String getPlayer2() {
+        return player2;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
     public String player1,player2,place,date,time;
     ArrayList<Set> setType;
 

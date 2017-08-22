@@ -6,12 +6,101 @@
     android:layout_height="match_parent"
     android:background="#e2e4fe"
     android:orientation="vertical"
+    android:visibility="visible"
     android:weightSum="1">
 
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/linearPreMatch"
         android:layout_width="match_parent"
-        android:layout_height="268dp">
+        android:layout_height="304dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/relativePreMatchRight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">>
+
+            <TextView
+                android:id="@+id/smashText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Smash"
+                android:textColor="@color/colorPrimary"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/dryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/smashText"
+                android:layout_weight="1"
+                android:text="Dry"
+                android:textColor="@color/colorPrimary"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/dryBallsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dryText"
+                android:text="Balls "
+                android:textColor="@color/colorPrimary"
+                android:textSize="36sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativePreMatchLeft"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"><![CDATA[>
+
+
+
+            ]]>
+
+            <ToggleButton
+                android:id="@+id/smashToggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="50sp"
+                android:text="ToggleButton" />
+
+            <ToggleButton
+                android:id="@+id/dryToggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="50sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/smashToggleButton"
+                android:text="ToggleButton" />
+
+            <Spinner
+                android:id="@+id/dryBallSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_below="@+id/dryToggleButton"
+
+                android:spinnerMode="dialog" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/startGameButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearbot"
+        android:text="Start Game"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:id="@+id/relativeTop"
+        android:layout_width="match_parent"
+        android:layout_height="268dp"
+        android:visibility="invisible">
 
         <ListView
             android:id="@+id/card_listView"
@@ -21,7 +110,10 @@
             android:clickable="false"
             android:divider="@null"
             android:dividerHeight="10dp"
-            android:listSelector="@android:color/transparent" />
+            android:listSelector="@android:color/transparent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 
@@ -30,7 +122,8 @@
         android:layout_width="match_parent"
         android:layout_height="166dp"
         android:layout_weight="0.60"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -78,7 +171,7 @@
             android:layout_weight="1">>
 
             <TextView
-                android:id="@+id/title2"
+                android:id="@+id/moveText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Move 1"
@@ -89,7 +182,7 @@
                 android:id="@+id/ballSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/title2" />
+                android:layout_below="@+id/moveText" />
 
             <Spinner
                 android:id="@+id/resultSpinner"
@@ -120,7 +213,8 @@
         android:layout_alignParentBottom="false"
         android:layout_alignParentEnd="false"
         android:elevation="0dp"
-        android:text="Next Move" />
+        android:text="Next Move"
+        android:visibility="invisible" />
 
 
 </LinearLayout>
