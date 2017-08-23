@@ -29,6 +29,10 @@ public class CardArrayAdapter  extends ArrayAdapter<Card> {
         super(context, textViewResourceId);
     }
 
+    public void clearList(){
+        cardList.clear();
+    }
+
     @Override
     public void add(Card object) {
         cardList.add(object);

@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
@@ -28,13 +29,14 @@ import static android.R.layout.simple_spinner_item;
 
 public class MatchActivity extends AppCompatActivity {
     private boolean turn = true; // true -> player1 , false -> player2
-    private int counter=-1,move =0;
+    private int player1Scr=0,player2Scr=0;
     Spinner ball,result,shot,ballPreMatch;
     String playerStr ,moveStr;
     LinearLayout linearBot,linearPreMatch;
     RelativeLayout relativeTop;
     Button button;
     ToggleButton smashBtn,dryBtn;
+    Set tempSet = new Set();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,7 @@ public class MatchActivity extends AppCompatActivity {
         spinnerArray.add("9");
 
         final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, simple_spinner_dropdown_item, spinnerArray);
+        final CardArrayAdapter cardArrayAdapter = new CardArrayAdapter(getApplicationContext(), R.layout.list_item_card);
         ballPreMatch = (Spinner) findViewById(R.id.dryBallSpinner);
         //ballPreMatch.setAdapter(spinnerArrayAdapter);
 
@@ -102,18 +105,19 @@ public class MatchActivity extends AppCompatActivity {
                 relativeTop.setVisibility(View.VISIBLE);
                 linearBot.setVisibility(View.VISIBLE);
                 button.setVisibility(View.VISIBLE);
+                cardArrayAdapter.clearList();
                 for(int i=0 ; i <listVOs.size(); i++) {
-                    if(listVOs.get(i).isSelected()) {
-                        Log.d("List",listVOs.get(i).toString() + "stin thesi " + i  );
-                    }
-                    Log.d("List",listVOs.get(i).isSelected() + "stin thesi " + i  );
+                  if(listVOs.get(i).isSelected()) {
+                      Log.d("test",listVOs.get(i).getTitle());
+                      spinnerArray.remove(listVOs.get(i).getTitle());
+                  }
                 }
 
             }
 
         });
         //ConstraintLayout topLayout = (ConstraintLayout) findViewById(R.id.ConstraintLayout);
-        ListView listView = (ListView) findViewById(R.id.card_listView);
+        final ListView listView = (ListView) findViewById(R.id.card_listView);
 
         final TextView playerText = (TextView) findViewById(R.id.title),moveText = (TextView) findViewById(R.id.moveText);
 
@@ -129,7 +133,7 @@ public class MatchActivity extends AppCompatActivity {
 
         //Log.d("Test",matches.get(matches.size()-1).player1);
 
-        final CardArrayAdapter cardArrayAdapter = new CardArrayAdapter(getApplicationContext(), R.layout.list_item_card);
+
 
         if(turn) {
             playerText.setText(matches.get(matches.size()-1).getPlayer1());
@@ -168,10 +172,45 @@ public class MatchActivity extends AppCompatActivity {
                     spinnerArray.remove(ball.getSelectedItem());
                     ball.setSelection(0);
                     if( spinnerArray.isEmpty()) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
+                        if(turn) {
+                            player1Scr++;
+                            player1.add(player1.size(),tempMove);
+                       } else {
+                            player2Scr++;
+                            player2.add(player2.size(),tempMove);
+                       }
+                        if(player1Scr == 2 || player2Scr == 2 ) {
+                            Toast.makeText(MatchActivity.this,  playerStr + " wins this game",
+                                    Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                        }
+                        linearPreMatch.setVisibility(View.VISIBLE);
+                        button2.setVisibility(View.VISIBLE);
+                        relativeTop.setVisibility(View.INVISIBLE);
+                        linearBot.setVisibility(View.INVISIBLE);
+                        button.setVisibility(View.INVISIBLE);
+                        spinnerArray.add("1");
+                        spinnerArray.add("2");
+                        spinnerArray.add("3");
+                        spinnerArray.add("4");
+                        spinnerArray.add("5");
+                        spinnerArray.add("6");
+                        spinnerArray.add("7");
+                        spinnerArray.add("8");
+                        spinnerArray.add("9");
+                        tempSet.setPlayer1(player1);
+                        tempSet.setPlayer2(player2);
+                        tempSet.setWinner(playerStr);
+                        matches.get(matches.size()-1).addSet(tempSet);
+                        player1.clear();
+                        player2.clear();
+                        //save data
+                        SharedPreferences.Editor editor = prefs.edit();
 
+                        editor.putString("yourStringName", gson.toJson(matches));
+                        editor.commit();
                     }
                     //Log.d("lista",spinnerArray.toString());
 

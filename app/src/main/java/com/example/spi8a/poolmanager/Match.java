@@ -8,7 +8,19 @@ import java.util.ArrayList;
 
 
 public class Match {
+    public ArrayList<Set> getSetType() {
+        return setType;
+    }
+    public void addSet (Set tempSet) {
+        setType.add(tempSet);
+    }
+
+    public void setSetType(ArrayList<Set> setType) {
+        this.setType = setType;
+    }
+
     public String getPlayer1() {
+
         return player1;
     }
 
@@ -31,10 +43,7 @@ public class Match {
     public String player1,player2,place,date,time;
     ArrayList<Set> setType;
 
-    public class Set{
-        ArrayList<Move> player1,player2;
-        String winner;
-    }
+
 
     public void setPlayer1(String name) {
         this.player1 = name;

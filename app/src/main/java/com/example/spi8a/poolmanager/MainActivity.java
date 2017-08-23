@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -47,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
         String json = prefs.getString("yourStringName", "default_value_here_if_string_is_missing");
         Gson gson = new Gson();
         Type type = new TypeToken<List<Match>>(){}.getType();
-         //final List<Match> matches =  gson.fromJson(json,type);
-        final List<Match> matches = new ArrayList<Match>();
+         final List<Match> matches =  gson.fromJson(json,type);
+        Log.d("MATCHES", String.valueOf(matches.size()));
+        //final List<Match> matches = new ArrayList<Match>();
         //create list for listview based on stored matches
         List<String> mylist = new ArrayList<String>();
         for(int i=0; i < matches.size(); i++) {
@@ -62,6 +64,16 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, mylist);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                Intent intent = new Intent(MainActivity.this, ViewMatchActivity.class);
+                intent.putExtra("position",String.valueOf(position));
+                startActivity(intent);
+            }
+        });
 
 
         //save data to json

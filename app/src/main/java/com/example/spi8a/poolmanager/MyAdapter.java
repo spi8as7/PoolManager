@@ -77,9 +77,7 @@ public class MyAdapter extends ArrayAdapter<StateVO> {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 int getPosition = (Integer) buttonView.getTag();
                 //holder.mCheckBox.setChecked(true);
-                Log.d("List-prin", String.valueOf(listState.size()));
-               // listState.get(getPosition).setSelected(true);
-                Log.d("List-meta", String.valueOf(listState.size()));
+                listState.get(getPosition).setSelected(true);
             }
         });
         return convertView;
